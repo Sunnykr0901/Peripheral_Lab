@@ -1,0 +1,2 @@
+# LCI_Program
+When D6 on the input port is made low, a program is triggered that starts to make the LEDs on the output port blink one at a time (D0 first then D1, then D2...) cyclically with a delay of one second in between. When D5 of the input port is made low this programs stops and waits for D6 at the input port to go low and commences again. When D2 of the input port is made low the program terminates.
