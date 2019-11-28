@@ -1,0 +1,41 @@
+8085 PROGRAM TO GENERATE WAVEFORMS USING A 8-BIT DAC
+
+
+
+THE ASSIGNMENT CONSISTS OF TWO DIFFERENT FILES
+
+I)waveform.asm:-This file holds the code to generate five different waveforms using variable frequency taken as input from
+the user.The five waveforms correspond to five differnt DIP switches as follows:
+
+INPUT          WAVEFORM
+
+a)80h          Triangular
+b)40h		       Sawtooth
+c)20h		       Square
+d)10h	       	Staircase
+e)08h		      Symmetrical Staircase
+
+At the beginning of waveform generation we perform an inverse of the entered frequency using division function
+and compute the no of cycles required as a function of the time period calculated.
+
+The basic idea behind each of them are as follows:-
+
+a)Triangular:-It runs in 3 loops. In LOOP1, the value of the accumulator is incremented by 01H until its value becomes
+equal to maximum amplitude of waveform at that frequency and in LOOP2, the value of accumulator is decreased by 01H
+until its value becomes equal to 00H. LOOP1 is the loop for positive slope while LOOP2 corresponds to negative slope.
+LOOP3 is infinite loop for generating many cycles.
+
+b)Sawtooth:-It is a modification of the triangular waveform with the display reverting back to zero once the positive peak
+is reached. Each iteration, the accumulator is increased by 01H.
+
+c)Sqare:-It runs in 1 loop. In LOOP6, the pulse displays zero for one half of the time period and then the pulse
+displays a constant value of FFH for other half of the time period.
+
+d)Staircase:-It is another modification of the Sawtooth waveform except that each value is delayed for a much longer time
+than sawtooth and also the rise at each step is much steeper and discrete than sawtooth which incremented smoothly.
+
+e)Symmetrical Staircase:-It is the final modification of Staircase with the values at each step decrementing at the same rate
+and held using the same delay routine as the staircase one.
+
+II)sinewave.asm:-This program simply stores pre-computed values of sine function in main memory(8100 to 8124) and displays them onto the CRO
+by looping over the memory locations first incrementally,then decrementally.
